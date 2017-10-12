@@ -18,7 +18,7 @@
 		</div>
 		<script>
 			var box = document.getElementsByClassName("box")[0];
-			box.addEventListener("touchmove",function(e){
+			/*box.addEventListener("touchmove",function(e){
 				if(e.targetTouches.length==1){
 					var a = e.targetTouches[0];
 					console.log(a)
@@ -27,7 +27,22 @@
 				}
 				
 				
-			},false)
+			},false)*/
+			box.addEventListener("touchstart",function(e){
+				this.innerHTML=e.changedTouches.length;
+				console.log("touchstart")
+			})
+			box.addEventListener("touchmove",function(e){
+				this.innerHTML=e.changedTouches.length;
+				console.log("touchmove")
+			})
+			box.addEventListener("touchend",function(e){
+				this.innerHTML=e.changedTouches.length;
+				console.log("touchend")
+			})
+			
+			
+			
 		</script>
 	</body>
 </html>
