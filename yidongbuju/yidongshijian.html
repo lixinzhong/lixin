@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title></title>
+		<style>
+			.box{
+				width:300px;
+				height:300px;
+				background: red;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="box" >
+			
+		</div>
+		<script>
+			var box = document.getElementsByClassName("box")[0];
+			/*box.addEventListener("touchmove",function(e){
+				if(e.targetTouches.length==1){
+					var a = e.targetTouches[0];
+					console.log(a)
+					box.style.left = a.pagX+"px";
+					box.style.top = a.pagY+"px";
+				}
+				
+				
+			},false)*/
+			box.addEventListener("touchstart",function(e){
+				this.innerHTML=e.changedTouches.length;
+				console.log("touchstart")
+			})
+			box.addEventListener("touchmove",function(e){
+				this.innerHTML=e.changedTouches.length;
+				console.log("touchmove")
+			})
+			box.addEventListener("touchend",function(e){
+				this.innerHTML=e.changedTouches.length;
+				console.log("touchend")
+			})
+			
+			
+			
+		</script>
+	</body>
+</html>

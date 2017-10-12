@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<style>
+			html{
+				width:100%;
+				height:100%;
+			}
+			body{
+				width:100%;
+				height:100%;
+				overflow: hidden;
+				margin: 0;
+			}
+			.box{
+				margin: 0;
+				padding: 0;
+				width:400%;
+				height:100%;
+				list-style: none;
+				float: left;
+				
+			}
+			li{
+				width:25%;
+				height:100%;
+				float: left;
+			}
+		</style>
+		<script type="text/javascript" src="js/hammer.js" ></script>
+	</head>
+	<body>
+		<ul class="box" id="box">
+			<li>001</li>
+			<li>002</li>
+			<li>003</li>
+			<li>004</li>
+		</ul>
+		<script>
+			var box = document.getElementById("box")
+			var hins = new Hammer(box);
+			var flag = true;
+			var i=0;
+			hins.on("panleft",function(){
+				if(flag){
+					i++;
+					console.log(i)
+					box.style.webkitTransform="translate3d(-"+i*25+"%,0,0)";
+					flag=false;
+				}
+				if(i==4){
+					i=0;
+					box.style.webkitTransform="translate3d(-"+i*25+"%,0,0)";
+					flag=false;
+				}
+			})
+			box.addEventListener("touchend",function(){
+				flag=true;
+			})
+			hins.on("panright",function(){
+				if(flag){
+					i--;
+					console.log(i)
+					box.style.webkitTransform="translate3d(-"+i*25+"%,0,0)";
+					flag=false;
+				}
+				if(i<0){
+					i=3;
+					box.style.webkitTransform="translate3d(-"+i*25+"%,0,0)";
+					flag=false;
+				}
+			})
+			
+		</script>
+	</body>
+</html>
